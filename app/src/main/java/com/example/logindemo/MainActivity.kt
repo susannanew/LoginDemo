@@ -4,6 +4,7 @@ package com.example.logindemo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -27,11 +28,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onSuccess(result: LoginResult) {
+                intent = Intent(this@MainActivity,MainActivity2::class.java)
+                startActivity(intent)
                 textView.text= "Login Success${result?.accessToken?.userId}"+
                         "${result?.accessToken?.token}"
             }
-            
-
         })
     }
 
@@ -40,4 +41,5 @@ class MainActivity : AppCompatActivity() {
         callback?.onActivityResult(requestCode,resultCode,data)
 
     }
+
 }
